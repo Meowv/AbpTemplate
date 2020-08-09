@@ -1,6 +1,13 @@
-﻿namespace Abp.Template.MongoDb
+﻿using Volo.Abp.Modularity;
+using Volo.Abp.MongoDB;
+
+namespace Abp.Template.MongoDb
 {
-    public class AbpTemplateMongoDbModule
+    [DependsOn(
+        typeof(AbpMongoDbModule),
+        typeof(AbpTemplateDomainModule)
+    )]
+    public class AbpTemplateMongoDbModule : AbpModule
     {
     }
 }

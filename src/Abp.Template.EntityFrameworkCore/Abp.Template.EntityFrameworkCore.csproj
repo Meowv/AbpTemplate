@@ -5,4 +5,15 @@
     <RootNamespace>Abp.Template</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Dapper" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Abp.Template.Domain\Abp.Template.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

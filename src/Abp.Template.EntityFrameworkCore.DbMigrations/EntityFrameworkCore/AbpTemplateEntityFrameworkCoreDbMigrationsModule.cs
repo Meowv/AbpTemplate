@@ -1,6 +1,9 @@
-﻿namespace Abp.Template.EntityFrameworkCore
+﻿using Volo.Abp.Modularity;
+
+namespace Abp.Template.EntityFrameworkCore
 {
-    public class AbpTemplateEntityFrameworkCoreDbMigrationsModule
+    [DependsOn(typeof(AbpTemplateEntityFrameworkCoreModule))]
+    public class AbpTemplateEntityFrameworkCoreDbMigrationsModule : AbpModule
     {
     }
 }

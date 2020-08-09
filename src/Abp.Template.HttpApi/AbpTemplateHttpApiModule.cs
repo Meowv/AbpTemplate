@@ -1,6 +1,10 @@
-﻿namespace Abp.Template
+﻿using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.Modularity;
+
+namespace Abp.Template
 {
-    public class AbpTemplateHttpApiModule
+    [DependsOn(typeof(AbpAspNetCoreMvcModule))]
+    public class AbpTemplateHttpApiModule : AbpModule
     {
     }
 }

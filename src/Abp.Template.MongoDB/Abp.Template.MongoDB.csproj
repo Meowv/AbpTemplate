@@ -5,4 +5,12 @@
     <RootNamespace>Abp.Template</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.MongoDB" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Abp.Template.Domain\Abp.Template.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

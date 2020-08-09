@@ -1,6 +1,13 @@
-﻿namespace Abp.Template
+﻿using Volo.Abp.Domain;
+using Volo.Abp.Modularity;
+
+namespace Abp.Template
 {
-    public class AbpTemplateDomainModule
+    [DependsOn(
+        typeof(AbpDddDomainModule),
+        typeof(AbpTemplateDomainSharedModule)
+    )]
+    public class AbpTemplateDomainModule : AbpModule
     {
     }
 }

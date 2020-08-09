@@ -5,4 +5,8 @@
     <RootNamespace>Abp.Template</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" Version="3.0.5" />
+  </ItemGroup>
+
 </Project>

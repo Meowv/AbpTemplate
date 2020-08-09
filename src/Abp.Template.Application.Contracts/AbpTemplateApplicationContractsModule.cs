@@ -1,6 +1,10 @@
-﻿namespace Abp.Template
+﻿using Volo.Abp.Application;
+using Volo.Abp.Modularity;
+
+namespace Abp.Template
 {
-    public class AbpTemplateApplicationContractsModule
+    [DependsOn(typeof(AbpDddApplicationContractsModule))]
+    public class AbpTemplateApplicationContractsModule : AbpModule
     {
     }
 }

@@ -5,4 +5,8 @@
     <RootNamespace>Abp.Template</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Abp.Template.EntityFrameworkCore\Abp.Template.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
 </Project>
