@@ -18,7 +18,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Abp.Template.Application.Caching\Abp.Template.Application.Caching.csproj" />
     <ProjectReference Include="..\Abp.Template.Application\Abp.Template.Application.csproj" />
+    <ProjectReference Include="..\Abp.Template.EntityFrameworkCore\Abp.Template.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Abp.Template.HttpApi\Abp.Template.HttpApi.csproj" />
+    <ProjectReference Include="..\Abp.Template.MongoDB\Abp.Template.MongoDB.csproj" />
   </ItemGroup>
 
 </Project>

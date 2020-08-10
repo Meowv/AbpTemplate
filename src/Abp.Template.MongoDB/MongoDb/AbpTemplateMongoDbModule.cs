@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Modularity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Modularity;
 using Volo.Abp.MongoDB;
 
 namespace Abp.Template.MongoDb
@@ -9,5 +10,12 @@ namespace Abp.Template.MongoDb
     )]
     public class AbpTemplateMongoDbModule : AbpModule
     {
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            context.Services.AddMongoDbContext<AbpTemplateMongoDbContext>(options =>
+            {
+                options.AddDefaultRepositories(includeAllEntities: true);
+            });
+        }
     }
 }

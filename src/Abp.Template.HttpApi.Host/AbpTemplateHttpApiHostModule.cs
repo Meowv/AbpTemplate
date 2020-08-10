@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Abp.Template.EntityFrameworkCore;
+using Abp.Template.MongoDb;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +26,9 @@ namespace Abp.Template
         typeof(AbpTemplateHttpApiModule),
         typeof(AbpTemplateApplicationModule),
         typeof(AbpTemplateApplicationCachingModule),
-        typeof(AbpAspNetCoreSerilogModule)
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpTemplateEntityFrameworkCoreModule),
+        typeof(AbpTemplateMongoDbModule)
     )]
     public class AbpTemplateHttpApiHostModule : AbpModule
     {
