@@ -15,5 +15,7 @@ namespace Abp.Template.Configuration
         }
 
         public static string EnabledStorage => configuration["ConnectionStrings:EnabledStorage"];
+
+        public static string ConnectionString => configuration.GetConnectionString(EnabledStorage);
     }
 }

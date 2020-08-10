@@ -19,7 +19,7 @@ namespace Abp.Template
 #endif
                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                .Enrich.FromLogContext()
-               .WriteTo.Async(c => c.File($"Logs/{DateTime.Now:yyyyMMdd}/logs.txt"))
+               .WriteTo.Async(c => c.File($"Logs/{DateTime.Now:yyyy/MMdd}/logs.txt"))
                .CreateLogger();
 
             try
