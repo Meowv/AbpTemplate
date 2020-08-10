@@ -7,35 +7,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FD3759D8-BF3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{46170A3A-9B73-4200-9FEF-681B4E16290C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Application", "src\Abp.Template.Application\Abp.Template.Application.csproj", "{F370DDAB-4D21-49CB-80D6-416784A05236}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.Application", "src\Abp.Template.Application\Abp.Template.Application.csproj", "{F370DDAB-4D21-49CB-80D6-416784A05236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Application.Contracts", "src\Abp.Template.Application.Contracts\Abp.Template.Application.Contracts.csproj", "{C62BBCA1-FD32-45CF-8431-659A7A754767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.Application.Contracts", "src\Abp.Template.Application.Contracts\Abp.Template.Application.Contracts.csproj", "{C62BBCA1-FD32-45CF-8431-659A7A754767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Domain", "src\Abp.Template.Domain\Abp.Template.Domain.csproj", "{ED9A3D03-6615-46AC-9DA7-09545BF1D188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.Domain", "src\Abp.Template.Domain\Abp.Template.Domain.csproj", "{ED9A3D03-6615-46AC-9DA7-09545BF1D188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Domain.Shared", "src\Abp.Template.Domain.Shared\Abp.Template.Domain.Shared.csproj", "{7F07FB0C-D857-4E31-ACD2-B5AD61D2AC40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.Domain.Shared", "src\Abp.Template.Domain.Shared\Abp.Template.Domain.Shared.csproj", "{7F07FB0C-D857-4E31-ACD2-B5AD61D2AC40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.EntityFrameworkCore", "src\Abp.Template.EntityFrameworkCore\Abp.Template.EntityFrameworkCore.csproj", "{4C3C33C1-D192-4CD4-8655-0E8B5E975432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.EntityFrameworkCore", "src\Abp.Template.EntityFrameworkCore\Abp.Template.EntityFrameworkCore.csproj", "{4C3C33C1-D192-4CD4-8655-0E8B5E975432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.HttpApi.Host", "src\Abp.Template.HttpApi.Host\Abp.Template.HttpApi.Host.csproj", "{D0329F18-5855-401B-8D20-5DCA334079A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.HttpApi.Host", "src\Abp.Template.HttpApi.Host\Abp.Template.HttpApi.Host.csproj", "{D0329F18-5855-401B-8D20-5DCA334079A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.DbMigrator", "src\Abp.Template.DbMigrator\Abp.Template.DbMigrator.csproj", "{9F03ACB5-4BA1-4A1B-8CCC-C758FDE99B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.DbMigrator", "src\Abp.Template.DbMigrator\Abp.Template.DbMigrator.csproj", "{9F03ACB5-4BA1-4A1B-8CCC-C758FDE99B49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.EntityFrameworkCore.DbMigrations", "src\Abp.Template.EntityFrameworkCore.DbMigrations\Abp.Template.EntityFrameworkCore.DbMigrations.csproj", "{586ED70F-7CE6-4BB6-A5EB-DE10F09E65C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.EntityFrameworkCore.DbMigrations", "src\Abp.Template.EntityFrameworkCore.DbMigrations\Abp.Template.EntityFrameworkCore.DbMigrations.csproj", "{586ED70F-7CE6-4BB6-A5EB-DE10F09E65C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.MongoDB", "src\Abp.Template.MongoDB\Abp.Template.MongoDB.csproj", "{4C01A94A-C3A6-422A-9414-CB5DE48ED62B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.MongoDB", "src\Abp.Template.MongoDB\Abp.Template.MongoDB.csproj", "{4C01A94A-C3A6-422A-9414-CB5DE48ED62B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.HttpApi", "src\Abp.Template.HttpApi\Abp.Template.HttpApi.csproj", "{02996506-E306-4963-BCA1-CA2280641503}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.HttpApi", "src\Abp.Template.HttpApi\Abp.Template.HttpApi.csproj", "{02996506-E306-4963-BCA1-CA2280641503}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Application.Tests", "test\Abp.Template.Application.Tests\Abp.Template.Application.Tests.csproj", "{CCA92A25-FFE1-4EEB-BD6B-0060DF82546A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.Application.Tests", "test\Abp.Template.Application.Tests\Abp.Template.Application.Tests.csproj", "{CCA92A25-FFE1-4EEB-BD6B-0060DF82546A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Domain.Tests", "test\Abp.Template.Domain.Tests\Abp.Template.Domain.Tests.csproj", "{B6A2185A-EC81-44DE-88CA-C62B9DC1C7E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.Domain.Tests", "test\Abp.Template.Domain.Tests\Abp.Template.Domain.Tests.csproj", "{B6A2185A-EC81-44DE-88CA-C62B9DC1C7E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.EntityFrameworkCore.Tests", "test\Abp.Template.EntityFrameworkCore.Tests\Abp.Template.EntityFrameworkCore.Tests.csproj", "{23CFCCB8-456E-4C45-951C-EDA8E329E359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.EntityFrameworkCore.Tests", "test\Abp.Template.EntityFrameworkCore.Tests\Abp.Template.EntityFrameworkCore.Tests.csproj", "{23CFCCB8-456E-4C45-951C-EDA8E329E359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.MongoDB.Tests", "test\Abp.Template.MongoDB.Tests\Abp.Template.MongoDB.Tests.csproj", "{75627E9B-676F-40A8-97C1-8B0CA465D10B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.MongoDB.Tests", "test\Abp.Template.MongoDB.Tests\Abp.Template.MongoDB.Tests.csproj", "{75627E9B-676F-40A8-97C1-8B0CA465D10B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.TestBase", "test\Abp.Template.TestBase\Abp.Template.TestBase.csproj", "{CDA2EE53-353A-4FFA-A21B-89F3B5E99489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Template.TestBase", "test\Abp.Template.TestBase\Abp.Template.TestBase.csproj", "{CDA2EE53-353A-4FFA-A21B-89F3B5E99489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Template.Application.Caching", "src\Abp.Template.Application.Caching\Abp.Template.Application.Caching.csproj", "{4D540124-A9D8-4311-8E7D-DED148865BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -227,6 +229,18 @@ Global
 		{CDA2EE53-353A-4FFA-A21B-89F3B5E99489}.Release|x64.Build.0 = Release|Any CPU
 		{CDA2EE53-353A-4FFA-A21B-89F3B5E99489}.Release|x86.ActiveCfg = Release|Any CPU
 		{CDA2EE53-353A-4FFA-A21B-89F3B5E99489}.Release|x86.Build.0 = Release|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Debug|x64.Build.0 = Debug|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Debug|x86.Build.0 = Debug|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Release|x64.ActiveCfg = Release|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Release|x64.Build.0 = Release|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Release|x86.ActiveCfg = Release|Any CPU
+		{4D540124-A9D8-4311-8E7D-DED148865BA0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,6 +261,7 @@ Global
 		{23CFCCB8-456E-4C45-951C-EDA8E329E359} = {46170A3A-9B73-4200-9FEF-681B4E16290C}
 		{75627E9B-676F-40A8-97C1-8B0CA465D10B} = {46170A3A-9B73-4200-9FEF-681B4E16290C}
 		{CDA2EE53-353A-4FFA-A21B-89F3B5E99489} = {46170A3A-9B73-4200-9FEF-681B4E16290C}
+		{4D540124-A9D8-4311-8E7D-DED148865BA0} = {FD3759D8-BF37-4544-BEFB-3D7F3F4FB74B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCF68F2A-CD10-405F-B15E-8EA6AE743E1D}

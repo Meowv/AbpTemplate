@@ -3,7 +3,10 @@ using Volo.Abp.Modularity;
 
 namespace Abp.Template
 {
-    [DependsOn(typeof(AbpDddApplicationContractsModule))]
+    [DependsOn(
+        typeof(AbpTemplateDomainSharedModule),
+        typeof(AbpDddApplicationContractsModule)
+    )]
     public class AbpTemplateApplicationContractsModule : AbpModule
     {
     }

@@ -3,7 +3,10 @@ using Volo.Abp.Modularity;
 
 namespace Abp.Template
 {
-    [DependsOn(typeof(AbpAspNetCoreMvcModule))]
+    [DependsOn(
+        typeof(AbpAspNetCoreMvcModule),
+        typeof(AbpTemplateApplicationContractsModule)
+    )]
     public class AbpTemplateHttpApiModule : AbpModule
     {
     }
