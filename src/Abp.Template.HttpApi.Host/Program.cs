@@ -19,7 +19,7 @@ namespace Abp.Template
 #endif
                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                .Enrich.FromLogContext()
-               .WriteTo.Async(c => c.File("Logs/logs.txt"))
+               .WriteTo.Async(c => c.File($"Logs/{DateTime.Now:yyyyMMdd}/logs.txt"))
                .CreateLogger();
 
             try
@@ -44,7 +44,6 @@ namespace Abp.Template
                 {
                     webBuilder.UseIISIntegration()
                               .UseStartup<Startup>();
-                              //.UseUrls($"http://*:{5000}");
                 }).UseAutofac().UseSerilog();
     }
 }

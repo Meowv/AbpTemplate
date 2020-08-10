@@ -33,15 +33,14 @@ namespace Abp.Template
             var configuration = context.Services.GetConfiguration();
 
             ConfigureConventionalControllers();
-            ConfigureAuthentication(context, configuration);
+            ConfigureRouting(context);
+            ConfigureAuthentication(context);
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
-            ConfigureRedis(context);
+            ConfigureRedis(context, configuration);
             ConfigureCors(context, configuration);
             ConfigureSwaggerServices(context);
         }
-
-        private const string DefaultCorsPolicyName = "Default";
 
         private void ConfigureConventionalControllers()
         {
@@ -51,9 +50,19 @@ namespace Abp.Template
             });
         }
 
-        private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
+        private void ConfigureRouting(ServiceConfigurationContext context)
         {
-            // TODO
+            context.Services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+                options.AppendTrailingSlash = true;
+            });
+        }
+
+        private void ConfigureAuthentication(ServiceConfigurationContext context)
+        {
+            context.Services.AddAuthentication();
+            context.Services.AddAuthorization();
         }
 
         private void ConfigureLocalization()
@@ -76,23 +85,24 @@ namespace Abp.Template
             });
         }
 
-        private void ConfigureRedis(ServiceConfigurationContext context)
+        private void ConfigureRedis(ServiceConfigurationContext context, IConfiguration configuration)
         {
             context.Services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = "";
+                options.Configuration = configuration["Caching:RedisConnectionString"];
             });
         }
 
         private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
         {
+            var policyName = configuration["Cors:PolicyName"];
+            var origins = configuration["Cors:Origins"].Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                                       .Select(o => o.RemovePostFix("/"))
+                                                       .ToArray();
             context.Services.AddCors(options =>
             {
-                options.AddPolicy(DefaultCorsPolicyName, builder =>
+                options.AddPolicy(policyName, builder =>
                 {
-                    var origins = configuration["App:CorsOrigins"].Split(",", StringSplitOptions.RemoveEmptyEntries)
-                                                                  .Select(o => o.RemovePostFix("/"))
-                                                                  .ToArray();
                     builder.WithOrigins(origins)
                            .WithAbpExposedHeaders()
                            .SetIsOriginAllowedToAllowWildcardSubdomains()
@@ -127,11 +137,17 @@ namespace Abp.Template
             }
 
             app.UseCorrelationId();
+
             app.UseVirtualFiles();
+
             app.UseRouting();
-            app.UseCors(DefaultCorsPolicyName);
-            app.UseAuthentication();
+
+            app.UseCors(context.GetConfiguration()["Cors:PolicyName"]);
+
             app.UseAbpRequestLocalization();
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseSwagger(options =>
@@ -150,7 +166,9 @@ namespace Abp.Template
             });
 
             app.UseAuditing();
+
             app.UseAbpSerilogEnrichers();
+
             app.UseConfiguredEndpoints();
         }
     }
