@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>AbpTemplate</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="5.5.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AbpTemplate.Application.Caching\AbpTemplate.Application.Caching.csproj" />
+    <ProjectReference Include="..\AbpTemplate.Application\AbpTemplate.Application.csproj" />
+    <ProjectReference Include="..\AbpTemplate.EntityFrameworkCore\AbpTemplate.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\AbpTemplate.HttpApi\AbpTemplate.HttpApi.csproj" />
+    <ProjectReference Include="..\AbpTemplate.MongoDB\AbpTemplate.MongoDB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
+</Project>
