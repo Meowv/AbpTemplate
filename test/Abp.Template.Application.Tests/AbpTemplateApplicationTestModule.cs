@@ -7,7 +7,7 @@ namespace Abp.Template
         typeof(AbpTemplateApplicationModule),
         typeof(AbpTemplateDomainTestModule)
     )]
-    public class AbpTemplateApplicationTestModule: AbpModule
+    public class AbpTemplateApplicationTestModule : AbpModule
     {
     }
 }
