@@ -8,7 +8,7 @@
     </description>
     <authors>阿星Plus</authors>
     <projectUrl>https://github.com/Meowv/AbpTemplate</projectUrl>
-    <license>MIT</license>
+    <license type="expression">MIT</license>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
