@@ -1,6 +1,13 @@
-﻿namespace Abp.Template
+﻿using Abp.Template.Domain.Tests;
+using Volo.Abp.Modularity;
+
+namespace Abp.Template
 {
-    public class AbpTemplateApplicationTestModule
+    [DependsOn(
+        typeof(AbpTemplateApplicationModule),
+        typeof(AbpTemplateDomainTestModule)
+    )]
+    public class AbpTemplateApplicationTestModule: AbpModule
     {
     }
 }

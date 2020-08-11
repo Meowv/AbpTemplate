@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 using Xunit;
 
-namespace Abp.Template.Repositories
+namespace Abp.Template.Samples
 {
     public class SampleRepositoryTests : AbpTemplateEntityFrameworkCoreTestBase
     {
