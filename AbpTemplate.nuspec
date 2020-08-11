@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AbpTemplate</id>
+    <version>0.2.0</version>
+    <description>
+      Templates to use when creating an application for abp vNext.
+    </description>
+    <authors>阿星Plus</authors>
+    <projectUrl>https://github.com/Meowv/AbpTemplate</projectUrl>
+    <license>MIT</license>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+</package>
