@@ -7,6 +7,8 @@ namespace Abp.Template.EntityFrameworkCore
     [ConnectionString]
     public class AbpTemplateDbContext : AbpDbContext<AbpTemplateDbContext>
     {
+        public DbSet<AppUser> Users { get; set; }
+
         public AbpTemplateDbContext(DbContextOptions<AbpTemplateDbContext> options) : base(options)
         {
         }
