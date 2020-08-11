@@ -11,8 +11,10 @@ Templates to use when creating an application for abp vNext.
 ```
 dotnet new -i AbpTemplate
 
-dotnet new abp -n Xxx(The name for the output being created. If no name is specified, the name of the current directory is used.)
+dotnet new abp -n Xxx(The name for the output being created)
 ```
+
+➡ [see more](https://aka.ms/dotnet-new)
 
 ## ☀️ License
 

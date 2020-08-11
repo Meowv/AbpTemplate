@@ -6,6 +6,16 @@
 
 Templates to use when creating an application for abp vNext.
 
+## ⚡ Getting Started
+
+```
+dotnet new -i AbpTemplate
+
+dotnet new abp -n Xxx(The name for the output being created)
+```
+
+➡ [see more](https://aka.ms/dotnet-new)
+
 ## ☀️ License
 
 This project is licensed under [MIT](LICENSE).
