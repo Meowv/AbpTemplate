@@ -1,5 +1,6 @@
 ﻿using AbpTemplate.Configuration;
 using AbpTemplate.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -49,6 +50,14 @@ namespace AbpTemplate.Authentication
                 result.IsSuccess(token);
                 return await Task.FromResult(result);
             });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("Test")]
+        public async Task<ServiceResult> Test()
+        {
+            return await Task.FromResult(new ServiceResult());
         }
     }
 }

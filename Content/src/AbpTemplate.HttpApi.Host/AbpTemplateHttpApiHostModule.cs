@@ -1,10 +1,12 @@
 ﻿using AbpTemplate.Configuration;
 using AbpTemplate.EntityFrameworkCore;
 using AbpTemplate.MongoDb;
+using AbpTemplate.Response;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Serilog;
@@ -21,6 +24,8 @@ using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
+using AbpTemplate.Extensions;
+using System.Threading.Tasks;
 
 namespace AbpTemplate
 {
@@ -87,7 +92,24 @@ namespace AbpTemplate
 
                        options.Events = new JwtBearerEvents
                        {
+                           OnChallenge = async context =>
+                           {
+                               context.HandleResponse();
 
+                               context.Response.ContentType = "application/json;charset=utf-8";
+                               context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+
+                               var result = new ServiceResult();
+                               result.IsFailed(nameof(HttpStatusCode.Unauthorized));
+
+                               await context.Response.WriteAsync(result.ToJson());
+                           },
+                           OnMessageReceived = async context =>
+                           {
+                               context.Token = context.Request.Query["token"];
+
+                               await Task.CompletedTask;
+                           }
                        };
                    });
 
