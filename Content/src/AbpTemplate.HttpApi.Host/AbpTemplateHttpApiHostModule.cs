@@ -1,11 +1,14 @@
-﻿using AbpTemplate.EntityFrameworkCore;
+﻿using AbpTemplate.Configuration;
+using AbpTemplate.EntityFrameworkCore;
 using AbpTemplate.MongoDb;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
@@ -34,15 +37,13 @@ namespace AbpTemplate
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            var configuration = context.Services.GetConfiguration();
-
             ConfigureConventionalControllers();
             ConfigureRouting(context);
             ConfigureAuthentication(context);
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
-            ConfigureRedis(context, configuration);
-            ConfigureCors(context, configuration);
+            ConfigureRedis(context);
+            ConfigureCors(context);
             ConfigureSwaggerServices(context);
         }
 
@@ -50,7 +51,11 @@ namespace AbpTemplate
         {
             Configure<AbpAspNetCoreMvcOptions>(options =>
             {
-                options.ConventionalControllers.Create(typeof(AbpTemplateApplicationModule).Assembly);
+                options.ConventionalControllers
+                       .Create(typeof(AbpTemplateApplicationModule).Assembly, opts =>
+                       {
+                           opts.RootPath = "AbpTemplate";
+                       });
             });
         }
 
@@ -65,8 +70,30 @@ namespace AbpTemplate
 
         private void ConfigureAuthentication(ServiceConfigurationContext context)
         {
-            context.Services.AddAuthentication();
+            context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                   .AddJwtBearer(options =>
+                   {
+                       options.TokenValidationParameters = new TokenValidationParameters
+                       {
+                           ValidateIssuer = true,
+                           ValidateAudience = true,
+                           ValidateLifetime = true,
+                           ClockSkew = TimeSpan.FromSeconds(AppSettings.JWT.ClockSkew),
+                           ValidateIssuerSigningKey = true,
+                           ValidAudience = AppSettings.JWT.ValidAudience,
+                           ValidIssuer = AppSettings.JWT.ValidIssuer,
+                           IssuerSigningKey = new SymmetricSecurityKey(AppSettings.JWT.IssuerSigningKey.GetBytes())
+                       };
+
+                       options.Events = new JwtBearerEvents
+                       {
+
+                       };
+                   });
+
             context.Services.AddAuthorization();
+
+            context.Services.AddHttpClient();
         }
 
         private void ConfigureLocalization()
@@ -89,25 +116,28 @@ namespace AbpTemplate
             });
         }
 
-        private void ConfigureRedis(ServiceConfigurationContext context, IConfiguration configuration)
+        private void ConfigureRedis(ServiceConfigurationContext context)
         {
-            context.Services.AddStackExchangeRedisCache(options =>
+            if (!AppSettings.Caching.Disabled)
             {
-                options.Configuration = configuration["Caching:RedisConnectionString"];
-            });
+                context.Services.AddStackExchangeRedisCache(options =>
+                {
+                    options.Configuration = AppSettings.Caching.RedisConnectionString;
+                });
+            }
         }
 
-        private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
+        private void ConfigureCors(ServiceConfigurationContext context)
         {
-            var policyName = configuration["Cors:PolicyName"];
-            var origins = configuration["Cors:Origins"].Split(",", StringSplitOptions.RemoveEmptyEntries)
-                                                       .Select(o => o.RemovePostFix("/"))
-                                                       .ToArray();
             context.Services.AddCors(options =>
             {
-                options.AddPolicy(policyName, builder =>
+                options.AddPolicy(AppSettings.Cors.PolicyName, builder =>
                 {
-                    builder.WithOrigins(origins)
+                    builder.WithOrigins(AppSettings.Cors
+                                                   .Origins
+                                                   .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                                   .Select(o => o.RemovePostFix("/"))
+                                                   .ToArray())
                            .WithAbpExposedHeaders()
                            .SetIsOriginAllowedToAllowWildcardSubdomains()
                            .AllowAnyHeader()
@@ -140,19 +170,28 @@ namespace AbpTemplate
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHsts();
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseCorrelationId();
 
             app.UseVirtualFiles();
 
             app.UseRouting();
 
-            app.UseCors(context.GetConfiguration()["Cors:PolicyName"]);
+            app.UseCors(AppSettings.Cors.PolicyName);
 
             app.UseAbpRequestLocalization();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseHttpsRedirection();
 
             app.UseSwagger(options =>
             {

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
@@ -21,10 +22,6 @@
     <ProjectReference Include="..\AbpTemplate.EntityFrameworkCore\AbpTemplate.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\AbpTemplate.HttpApi\AbpTemplate.HttpApi.csproj" />
     <ProjectReference Include="..\AbpTemplate.MongoDB\AbpTemplate.MongoDB.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Logs\" />
   </ItemGroup>
 
 </Project>
