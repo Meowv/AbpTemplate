@@ -1,5 +1,7 @@
 ﻿using AbpTemplate.Configuration;
 using AbpTemplate.EntityFrameworkCore;
+using AbpTemplate.Extensions;
+using AbpTemplate.Filters;
 using AbpTemplate.MongoDb;
 using AbpTemplate.Response;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,11 +14,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Serilog;
@@ -24,8 +28,6 @@ using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
-using AbpTemplate.Extensions;
-using System.Threading.Tasks;
 
 namespace AbpTemplate
 {
@@ -176,9 +178,24 @@ namespace AbpTemplate
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "AbpTemplate API",
-                    Version = "v1"
+                    Description = @"<a class=""link"" target=""_blank"" href=""https://meowv.com"">https://meowv.com</a>、<a class=""link"" target=""_blank"" href=""https://github.com/meowv"">https://github.com/meowv</a>、<a class=""link"" target=""_blank"" href=""https://www.nuget.org/profiles/qix"">https://www.nuget.org/profiles/qix</a>",
+                    Version = "v1.0.0"
                 });
                 options.DocInclusionPredicate((docName, description) => true);
+
+                var security = new OpenApiSecurityScheme
+                {
+                    Description = "<b>please enter <code>Bearer {Token}</code> for authentication.</b>",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                };
+                options.AddSecurityDefinition("oauth2", security);
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement { { security, null } });
+                options.OperationFilter<AddResponseHeadersFilter>();
+                options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
+                options.OperationFilter<SecurityRequirementsOperationFilter>();
+                options.DocumentFilter<SwaggerDocumentFilter>();
             });
         }
 
@@ -227,7 +244,7 @@ namespace AbpTemplate
                 options.DefaultModelsExpandDepth(-1);
                 options.DocExpansion(DocExpansion.List);
                 options.RoutePrefix = string.Empty;
-                options.DocumentTitle = "AbpTemplate API";
+                options.DocumentTitle = "⚡AbpTemplate API";
             });
 
             app.UseAuditing();
