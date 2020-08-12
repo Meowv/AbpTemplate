@@ -181,7 +181,11 @@ namespace AbpTemplate
                     Description = @"<a class=""link"" target=""_blank"" href=""https://meowv.com"">https://meowv.com</a>、<a class=""link"" target=""_blank"" href=""https://github.com/meowv"">https://github.com/meowv</a>、<a class=""link"" target=""_blank"" href=""https://www.nuget.org/profiles/qix"">https://www.nuget.org/profiles/qix</a>",
                     Version = "v1.0.0"
                 });
+
                 options.DocInclusionPredicate((docName, description) => true);
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "AbpTemplate.Domain.xml"));
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "AbpTemplate.HttpApi.xml"));
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "AbpTemplate.Application.Contracts.xml"));
 
                 var security = new OpenApiSecurityScheme
                 {
@@ -190,6 +194,7 @@ namespace AbpTemplate
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 };
+
                 options.AddSecurityDefinition("oauth2", security);
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement { { security, null } });
                 options.OperationFilter<AddResponseHeadersFilter>();
@@ -237,7 +242,10 @@ namespace AbpTemplate
                 options.RouteTemplate = "api-docs/{documentName}/swagger.json";
                 options.SerializeAsV2 = true;
             });
-            app.UseReDoc();
+            app.UseReDoc(options =>
+            {
+                options.DocumentTitle = "⚡AbpTemplate API Docs";
+            });
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/api-docs/v1/swagger.json", "AbpTemplate API");

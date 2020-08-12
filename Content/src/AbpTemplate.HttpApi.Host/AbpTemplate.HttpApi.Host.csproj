@@ -25,4 +25,16 @@
     <ProjectReference Include="..\AbpTemplate.MongoDB\AbpTemplate.MongoDB.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="AbpTemplate.Application.Contracts.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AbpTemplate.Domain.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AbpTemplate.HttpApi.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

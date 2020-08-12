@@ -14,6 +14,10 @@ namespace AbpTemplate.Controller
             _localizer = localizer;
         }
 
+        /// <summary>
+        /// HelloWorld
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("HelloWorld")]
         public string HelloWorld()

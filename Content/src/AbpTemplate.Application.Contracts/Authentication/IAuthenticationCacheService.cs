@@ -7,7 +7,7 @@ namespace AbpTemplate.Authentication
     public interface IAuthenticationCacheService
     {
         /// <summary>
-        /// 生成Token
+        /// Generate Token
         /// </summary>
         /// <param name="func"></param>
         /// <returns></returns>

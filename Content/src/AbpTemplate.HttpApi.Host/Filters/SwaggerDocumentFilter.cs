@@ -23,7 +23,9 @@ namespace AbpTemplate.Filters
                 },
             };
 
-            var apis = context.ApiDescriptions.Where(x => x.RelativePath.Contains("/api/abp"));
+            swaggerDoc.Tags = tags.OrderBy(x => x.Name).ToList();
+
+            var apis = context.ApiDescriptions.Where(x => x.RelativePath.Contains("abp"));
             if (apis.Any())
             {
                 foreach (var item in apis)
@@ -31,8 +33,6 @@ namespace AbpTemplate.Filters
                     swaggerDoc.Paths.Remove("/" + item.RelativePath);
                 }
             }
-
-            swaggerDoc.Tags = tags.OrderBy(x => x.Name).ToList();
         }
     }
 }

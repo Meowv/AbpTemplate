@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>AbpTemplate</RootNamespace>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>..\AbpTemplate.HttpApi.Host\AbpTemplate.HttpApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

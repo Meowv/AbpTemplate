@@ -6,7 +6,7 @@ namespace AbpTemplate.Authentication
     public interface IAuthenticationService
     {
         /// <summary>
-        /// 生成Token
+        /// Generate Token
         /// </summary>
         /// <returns></returns>
         Task<ServiceResult<string>> GenerateTokenAsync();
