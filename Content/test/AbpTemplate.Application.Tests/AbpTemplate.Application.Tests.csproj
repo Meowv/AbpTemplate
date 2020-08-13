@@ -6,10 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\AbpTemplate.Application.Caching\AbpTemplate.Application.Caching.csproj" />
     <ProjectReference Include="..\..\src\AbpTemplate.Application\AbpTemplate.Application.csproj" />
     <ProjectReference Include="..\AbpTemplate.Domain.Tests\AbpTemplate.Domain.Tests.csproj" />
   </ItemGroup>

@@ -116,8 +116,6 @@ namespace AbpTemplate
                    });
 
             context.Services.AddAuthorization();
-
-            context.Services.AddHttpClient();
         }
 
         private void ConfigureLocalization()

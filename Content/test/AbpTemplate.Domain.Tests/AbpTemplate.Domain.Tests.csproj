@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AbpTemplate.EntityFrameworkCore.Tests\AbpTemplate.EntityFrameworkCore.Tests.csproj" />
+    <ProjectReference Include="..\AbpTemplate.MongoDB.Tests\AbpTemplate.MongoDB.Tests.csproj" />
   </ItemGroup>
 
 </Project>

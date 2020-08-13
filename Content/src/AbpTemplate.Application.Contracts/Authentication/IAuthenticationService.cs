@@ -10,5 +10,11 @@ namespace AbpTemplate.Authentication
         /// </summary>
         /// <returns></returns>
         Task<ServiceResult<string>> GenerateTokenAsync();
+
+        /// <summary>
+        /// Test
+        /// </summary>
+        /// <returns></returns>
+        Task<ServiceResult> Test();
     }
 }
