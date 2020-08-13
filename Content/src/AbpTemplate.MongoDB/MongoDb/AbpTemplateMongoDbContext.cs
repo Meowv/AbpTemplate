@@ -1,4 +1,5 @@
-﻿using AbpTemplate.Attribute;
+﻿using AbpTemplate.AppUsers;
+using AbpTemplate.Attribute;
 using MongoDB.Driver;
 using Volo.Abp.MongoDB;
 

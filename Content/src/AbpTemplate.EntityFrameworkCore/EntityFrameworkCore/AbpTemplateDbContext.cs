@@ -1,4 +1,5 @@
-﻿using AbpTemplate.Attribute;
+﻿using AbpTemplate.AppUsers;
+using AbpTemplate.Attribute;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -18,6 +19,13 @@ namespace AbpTemplate.EntityFrameworkCore
             base.OnModelCreating(builder);
 
             builder.Configure();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.EnableSensitiveDataLogging();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AbpTemplate.EntityFrameworkCore;
+﻿using AbpTemplate.AppUsers;
+using AbpTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 using System;

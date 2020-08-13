@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AbpTemplate.AppUsers;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
+using static AbpTemplate.AbpTemplateDbConsts;
 
 namespace AbpTemplate.EntityFrameworkCore
 {
@@ -12,7 +14,11 @@ namespace AbpTemplate.EntityFrameworkCore
 
             builder.Entity<AppUser>(b =>
             {
-                b.ToTable("app_users");
+                b.ToTable(TableNames.AppUsers);
+                b.HasKey(x => x.Id);
+                b.Property(x => x.UserName).HasMaxLength(20).IsRequired();
+                b.Property(x => x.Password).HasMaxLength(20).IsRequired();
+                b.Property(x => x.Email).HasMaxLength(50).IsRequired();
 
                 b.ConfigureByConvention();
             });

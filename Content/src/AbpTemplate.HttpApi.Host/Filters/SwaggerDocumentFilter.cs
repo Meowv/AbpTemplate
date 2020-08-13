@@ -20,7 +20,7 @@ namespace AbpTemplate.Filters
                     Name = "Localization",
                     Description = "Localization",
                     ExternalDocs = new OpenApiExternalDocs { Description = "Localization" }
-                },
+                }
             };
 
             swaggerDoc.Tags = tags.OrderBy(x => x.Name).ToList();

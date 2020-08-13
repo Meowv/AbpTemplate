@@ -1,4 +1,5 @@
-﻿using AbpTemplate.MongoDb;
+﻿using AbpTemplate.AppUsers;
+using AbpTemplate.MongoDb;
 using MongoDB.Driver.Linq;
 using Shouldly;
 using System;

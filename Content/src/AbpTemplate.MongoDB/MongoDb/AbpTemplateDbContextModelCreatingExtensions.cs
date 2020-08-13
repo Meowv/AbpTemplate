@@ -1,5 +1,8 @@
-﻿using Volo.Abp;
+﻿using AbpTemplate.AppUsers;
+using MongoDB.Bson.Serialization.IdGenerators;
+using Volo.Abp;
 using Volo.Abp.MongoDB;
+using static AbpTemplate.AbpTemplateDbConsts;
 
 namespace AbpTemplate.MongoDb
 {
@@ -11,7 +14,10 @@ namespace AbpTemplate.MongoDb
 
             builder.Entity<AppUser>(b =>
             {
-                b.CollectionName = "app_users";
+                b.CollectionName = TableNames.AppUsers;
+                b.BsonMap.AutoMap();
+                b.BsonMap.MapIdMember(x => x.Id).SetIdGenerator(ObjectIdGenerator.Instance);
+                b.BsonMap.SetIgnoreExtraElements(true);
             });
         }
     }
