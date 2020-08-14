@@ -15,11 +15,10 @@ namespace AbpTemplate.DbMigrator
             Log.Logger = new LoggerConfiguration()
                .MinimumLevel.Information()
                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-               .MinimumLevel.Override("Volo.Abp", LogEventLevel.Warning)
 #if DEBUG
-               .MinimumLevel.Override("Acme.BookStore", LogEventLevel.Debug)
+               .MinimumLevel.Override("AbpTemplate", LogEventLevel.Debug)
 #else
-               .MinimumLevel.Override("Acme.BookStore", LogEventLevel.Information)
+               .MinimumLevel.Override("AbpTemplate", LogEventLevel.Information)
 #endif
                .Enrich.FromLogContext()
                .WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "Logs/logs.txt"))
