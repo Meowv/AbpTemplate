@@ -2,9 +2,9 @@
 using Exceptionless;
 using Exceptionless.Logging;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using System;
-using System.Collections.Generic;
 
 namespace AbpTemplate.Controller
 {
@@ -12,6 +12,7 @@ namespace AbpTemplate.Controller
     public class LocalizationController : AbpTemplateController
     {
         private readonly IStringLocalizer<AbpTemplateResource> _localizer;
+
 
         public LocalizationController(IStringLocalizer<AbpTemplateResource> localizer)
         {
@@ -35,10 +36,21 @@ namespace AbpTemplate.Controller
         /// <returns></returns>
         [HttpGet]
         [Route("Exception")]
-        public Dictionary<string, string> Get()
+        public string ExceptionlessTest()
         {
             ExceptionlessClient.Default.CreateLog("LocalizationController", "Getting results", LogLevel.Info).Submit();
             throw new Exception($"Random AspNetCore Exception: {Guid.NewGuid()}");
+        }
+
+        /// <summary>
+        /// Apollo
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Apollo")]
+        public IActionResult ApolloTest([FromServices] IConfiguration configuration, string key)
+        {
+            return Content(configuration.GetValue<string>(key));
         }
     }
 }
