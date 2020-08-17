@@ -1,6 +1,10 @@
 ﻿using AbpTemplate.Localization;
+using Exceptionless;
+using Exceptionless.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System;
+using System.Collections.Generic;
 
 namespace AbpTemplate.Controller
 {
@@ -23,6 +27,18 @@ namespace AbpTemplate.Controller
         public string HelloWorld()
         {
             return _localizer["HelloWorld"];
+        }
+
+        /// <summary>
+        /// Exception
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Exception")]
+        public Dictionary<string, string> Get()
+        {
+            ExceptionlessClient.Default.CreateLog("LocalizationController", "Getting results", LogLevel.Info).Submit();
+            throw new Exception($"Random AspNetCore Exception: {Guid.NewGuid()}");
         }
     }
 }

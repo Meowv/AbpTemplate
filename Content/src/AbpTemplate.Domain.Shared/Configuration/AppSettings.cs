@@ -51,5 +51,12 @@ namespace AbpTemplate.Configuration
 
             public static int Expires => Convert.ToInt32(Instance["Expires"]);
         }
+
+        public static class Exceptionless
+        {
+            static IConfigurationSection Instance => configuration.GetSection("Exceptionless");
+
+            public static string ApiKey => Instance["ApiKey"];
+        }
     }
 }

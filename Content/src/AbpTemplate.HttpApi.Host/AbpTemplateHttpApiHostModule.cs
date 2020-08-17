@@ -4,6 +4,7 @@ using AbpTemplate.Extensions;
 using AbpTemplate.Filters;
 using AbpTemplate.MongoDb;
 using AbpTemplate.Response;
+using Exceptionless;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
@@ -211,6 +212,8 @@ namespace AbpTemplate
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseExceptionless(AppSettings.Exceptionless.ApiKey);
 
             app.UseHsts();
 
